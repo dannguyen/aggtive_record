@@ -22,7 +22,8 @@ describe "AggtiveRecord::Aggable" do
 
     describe '#attr_datetime' do 
       it 'sets @@datetime_attribute' do 
-        MusicRecord.attr_datetime :published_at
+#  defined in spec helper already
+#        MusicRecord.attr_datetime :published_at
         expect(MusicRecord.datetime_attribute).to eq :published_at
       end
 

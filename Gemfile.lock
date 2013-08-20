@@ -28,6 +28,8 @@ GEM
       multi_json (~> 1.4)
       nokogiri (~> 1.5.2)
       oauth2
+    groupdate (1.0.0)
+      activerecord (>= 3.0.0)
     hashie (2.0.5)
     highline (1.6.19)
     httpauth (0.2.0)
@@ -84,6 +86,7 @@ DEPENDENCIES
   activesupport (~> 3.2.14)
   bundler
   database_cleaner (~> 1.0.1)
+  groupdate
   jeweler (~> 1.8.4)
   mysql2
   pry

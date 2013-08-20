@@ -1,11 +1,14 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
-require 'aggtive_record'
-require 'active_record'
 require 'mysql2'
+
+
+require 'active_record'
 require 'database_cleaner'
 
+require 'aggtive_record'
+require 'pry'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -29,19 +32,14 @@ ActiveRecord::Schema.define do
     t.string     "genre"
     t.datetime   'published_at'
     t.string      'description'
-    t.timestamps
   end 
 end
 
 class MusicRecord < ActiveRecord::Base 
   include AggtiveRecord::Aggable
+
+  attr_datetime :published_at
 end
-
-
-
-
-
-
 
 DatabaseCleaner.strategy = :truncation
 

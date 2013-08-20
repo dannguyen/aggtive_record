@@ -2,7 +2,9 @@ module AggtiveRecord
   module Aggable
     extend ActiveSupport::Concern
 
+
     included do 
+      include AggtiveRecord::EggScopes::TimeBucket
       class_attribute :datetime_attribute
     end
 
@@ -18,12 +20,5 @@ module AggtiveRecord
     end
 
 
-    def method_missing
-
-    end
-
-    def respond_to
-
-    end
   end
 end

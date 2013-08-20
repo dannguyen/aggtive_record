@@ -1,5 +1,5 @@
 module AggtiveRecord
-  module Scopes
+  module EggScopes
     module TimeSpan
 
       extend ActiveRecord::Concern

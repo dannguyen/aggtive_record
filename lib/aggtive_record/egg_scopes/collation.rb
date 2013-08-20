@@ -1,5 +1,5 @@
 module AggtiveRecord
-  module Scopes
+  module EggScopes
     module Collation
       extend ActiveRecord::Concern
     end
