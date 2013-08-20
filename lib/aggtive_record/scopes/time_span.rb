@@ -10,6 +10,13 @@ module AggtiveRecord
       mattr_reader :prefix
       self.prefix = 'during'
 
+=begin
+ 
+  
+  
+=end
+
+
     end
   end
 end
