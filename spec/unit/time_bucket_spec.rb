@@ -19,11 +19,11 @@ describe AggtiveRecord::EggScopes::TimeBucket do
       )
 
       @d = MusicRecord.create(
-        published_at: "2012-05-12"
+        published_at: "2012-05-12 15:00"
       )
     end
 
-    context 'discrete time periods' do
+    context 'basic groupdate usage' do
       it 'groups #by_year' do 
         @group = MusicRecord.by_year.
                               count.select{|k,v| k.year == 2010}.first
@@ -36,6 +36,26 @@ describe AggtiveRecord::EggScopes::TimeBucket do
         expect(@group[1]).to eq 2
       end
 
+      it 'groups #by_hour' do 
+        @group = MusicRecord.by_hour.count.
+                                    select{|k,v| k.hour == 15}.first
+        expect(@group[1]).to eq 1 
+      end
+
+
+      context 'groupdate options' do 
+        describe '#continuous' do 
+          it 'should adopt the usage of groupdate series' do 
+            pending %q{May make more sense to apply this operation at the end, as something separate from
+groupdate as it's not related to ActiveRecord
+            }
+          end
+
+          it 'populates default range between two endpoints'
+          it 'populates a specified range'
+
+        end
+      end
     end
 
 

@@ -6,3 +6,4 @@ end
 
 
 require_relative 'egg_scopes/time_bucket'
+require_relative 'egg_scopes/time_span'

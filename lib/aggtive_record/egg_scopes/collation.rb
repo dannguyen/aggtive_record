@@ -1,7 +1,7 @@
 module AggtiveRecord
   module EggScopes
     module Collation
-      extend ActiveRecord::Concern
+      extend ActiveSupport::Concern
     end
   end
 end
