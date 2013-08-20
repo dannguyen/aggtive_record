@@ -61,31 +61,31 @@ This gem takes some inspiration from the highly useful groupdate.
 
     @person.messages_count_during_past_year_per_day
 
-    @person.rate_word_count_from_messages_during_past_year_per_day
+    @person.messages_rate_per_day_during_past_year
 
-    @person.count_messages_during_past_year_per_day
-    @person.messages_count_during_past_year_per_day
+    @person.messages_count_in_past_year_by_day
+    @person.messages_count_in_past_year_by_day
 
     Message.count_during_past_year
 
 
 A standard verbose call:
 
-    @person.sum_word_count_from_messages_during_past_year_per_day
+    @person.sum_word_count_from_messages_during_past_year_by_day
 
 
 *Under the hood query:*
 
-    @person.egg.sum(:word_count).
+    @person.egg.
+      collate(:sum, :word_count).
       from(:messages).
-      during(:past_year).
-      per(:day)
-
+      in(:past_year).
+      by(:day)
 *Which translates to this in ActiveRecord:*
 
     @person.messages.
       where('sent_at >= ?', 1.year.ago).
-      group('DAY(sent_at)').
+      group_by_day(:sent_at).
       sum(:word_count)
   
 
@@ -94,6 +94,46 @@ A standard verbose call:
 
 
 
-### Scalars and arrays
+### Scalars
+
+    @messages.count_during_past_year
+    @messages.rate_per_day_during_past_year
+    @messages.average_per_day_of_word_count_during_past_year
+    @messages.sum_of_word_count_during_past_year
+
+### Arrays
+*similar to groupdate*
+
+    @messages.count_in_past_year_by_day
+    @messages.count_in_past_year_by_weekday
+    @messages.count_in_past_year_by_dayhour
+    @messages.count_in_past_year_by_hour
+
+    @messages.rate_per_hour_in_past_year_by_day
+    @messages.average_per_day_of_word_count_during_past_year_by_month
+    @messages.sum_of_word_count_during_past_year_by_day
+    
+
+
+### Custom time periods
+
+    @messages.count_during_year(year: 2010)
+    @messages.count_during_years(years: 2008..2012)
+    @messages.count_during_day(day: '2012-12-01')
+    @messages.count_during_year_by_week(year: 2010, timezone: 'PST', first_day: 'Sunday')
+
+
+
+
+count
+
+rate_per
+average_per, of_numeric_value
+
+sum, of_numeric_value
+
+list_of_proper_nouns_during_past_year
+
+counted_list_of_proper_nouns_during_past_year
 
 

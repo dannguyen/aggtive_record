@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 require 'hashie'
+=begin
+
+IGNORE ALL OF THIS
 
 class AnObject < ActiveRecord::Base
   include AggtiveRecord
@@ -58,3 +61,4 @@ describe 'AnObject with AggtiveRecord mixedin', skip: true do
   end
 
 end
+=end

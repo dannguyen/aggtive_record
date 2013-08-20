@@ -6,6 +6,9 @@ group :development do
   gem "bundler"
   gem "jeweler", "~> 1.8.4"
   gem 'pry'
+  gem 'database_cleaner', '~> 1.0.1'
+  gem 'activerecord', '~> 3.2.14'
+  gem 'mysql2'
 end
 
 gem 'activesupport', '~> 3.2.14'

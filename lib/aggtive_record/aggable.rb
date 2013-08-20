@@ -7,8 +7,8 @@ module AggtiveRecord
     end
 
     module ClassMethods
-      def attr_timestamp(attname)
-        raise ArgumentError unless is_a_datetime?(att)
+      def attr_datetime(attname)
+        raise ArgumentError unless is_a_datetime?(attname)
         self.datetime_attribute = attname 
       end
 
