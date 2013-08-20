@@ -5,27 +5,19 @@ describe AggtiveRecord::EggScopes::TimeSpan do
 
   describe '#in...' do 
     before(:each) do 
-      @a = MusicRecord.create(
-        published_at: "2010-01-20"
-      )
-      
-      @b = MusicRecord.create(
-        published_at: "2010-03-12"
-      )
 
-      @c = MusicRecord.create(
-        published_at: "2012-05-12"
-      )
-
-      @d = MusicRecord.create(
-        published_at: "2012-05-12"
-      )
     end
 
 
     describe '#past...' do 
       context 'singular periods' do 
-        it 'should span a #year'
+        it 'should span a #year' do 
+          @record = MusicRecord.create published_at: 4.months.ago
+          MusicRecord.create published_at: 9.years.ago 
+
+          expect(MusicRecord.past_year.count).to eq 1
+
+        end
       end
 
       context 'plural periods' do 

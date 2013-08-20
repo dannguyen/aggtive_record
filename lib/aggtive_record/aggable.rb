@@ -5,6 +5,8 @@ module AggtiveRecord
 
     included do 
       include AggtiveRecord::EggScopes::TimeBucket
+      include AggtiveRecord::EggScopes::TimeSpan
+
       class_attribute :datetime_attribute
     end
 
