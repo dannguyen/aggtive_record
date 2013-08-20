@@ -13,12 +13,11 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "aggtive_record"
   gem.homepage = "http://github.com/dannguyen/aggtive_record"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A convoluted way to describe aggregations of ActiveRecords over a datetime attribute}
+  gem.description = %Q{This is not even remotely finished or even started on. Please don't download.}
   gem.email = "dansonguyen@gmail.com"
   gem.authors = ["Dan Nguyen"]
   # dependencies defined in Gemfile
