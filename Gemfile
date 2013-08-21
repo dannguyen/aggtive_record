@@ -13,4 +13,3 @@ end
 
 gem 'groupdate'
 gem 'activesupport', '~> 3.2.14'
-gem 'squeel'

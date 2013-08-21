@@ -1,4 +1,3 @@
-require 'squeel'
 module AggtiveRecord
   module EggScopes
 

@@ -3,7 +3,6 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'mysql2'
 
-
 require 'active_record'
 require 'database_cleaner'
 
