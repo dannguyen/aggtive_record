@@ -17,12 +17,29 @@ describe AggtiveRecord::EggScopes::TimeSpan do
           expect(MusicRecord.past_year.count).to eq 1
         end
 
-        it 'should span a #month'
-        it 'should span an #hour'
+        it 'should span a #month' do 
+          @record = MusicRecord.create published_at: 4.months.ago
+          MusicRecord.create published_at: 2.days.ago
+          expect(MusicRecord.past_month.count).to eq 1
+        end
+
+        it 'should span an #hour' do 
+          @record = MusicRecord.create published_at: 2.hours.ago
+          MusicRecord.create published_at: 1.minute.ago
+          expect(MusicRecord.past_hour.count).to eq 1
+        end
       end
 
       context 'plural periods' do 
-        it 'should span #10_years'
+        it 'has a few of these: 14 days, 30 days, 6 months, etc' do 
+          [2.years.ago, 4.months.ago, 15.days.ago, 1.minute.ago].each do |t| 
+            MusicRecord.create published_at: t
+          end
+
+          expect(MusicRecord.past_6_months.count).to eq 3
+          expect(MusicRecord.past_30_days.count).to eq 2
+          expect(MusicRecord.past_14_days.count).to eq 1
+        end
       end    
     end
 
