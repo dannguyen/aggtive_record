@@ -11,7 +11,20 @@ describe "AggtiveRecord::EggScopes -- .rate" do
 
           expect(MusicRecord.rate_per(:year) ).to eq 1
         end
+
+        
+        it 'should raise an error when a non-time period is passed in'
+        it 'should play nicely with other methods'
       end
+
+
+      context 'helper methods' do 
+
+        it 'should get #earliest record in a set without re-querying database'
+        it 'should get #latest record in a set without re-querying database'
+
+      end
+
     end
   
 
