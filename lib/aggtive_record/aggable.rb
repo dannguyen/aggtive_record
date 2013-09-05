@@ -6,6 +6,7 @@ module AggtiveRecord
     included do 
       include AggtiveRecord::EggScopes::TimeBucket
       include AggtiveRecord::EggScopes::TimeSpan
+      include AggtiveRecord::EggScopes::Collation
 
       class_attribute :datetime_attribute
     end

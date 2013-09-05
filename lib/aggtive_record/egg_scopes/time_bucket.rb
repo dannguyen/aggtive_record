@@ -1,3 +1,5 @@
+# defines named_scopes
+
 require 'groupdate'
 module AggtiveRecord
   module EggScopes

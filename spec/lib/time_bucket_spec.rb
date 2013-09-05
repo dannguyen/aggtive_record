@@ -37,8 +37,9 @@ describe AggtiveRecord::EggScopes::TimeBucket do
       end
 
       it 'groups #by_hour' do 
-        @group = MusicRecord.by_hour.count.
-                                    select{|k,v| k.hour == 15}.first
+        @group = MusicRecord.by_hour.
+                                count.
+                                select{|k,v| k.hour == 15}.first
         expect(@group[1]).to eq 1 
       end
 

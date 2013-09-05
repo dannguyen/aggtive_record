@@ -1,9 +1,10 @@
+# defines named_scopes
 module AggtiveRecord
   module EggScopes
     module TimeSpan
 
       extend ActiveSupport::Concern
-    
+        
 
       included do 
 
