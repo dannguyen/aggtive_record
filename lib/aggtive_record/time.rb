@@ -18,6 +18,28 @@ module AggtiveRecord
       PERIODS + OTHER_PERIODS
     end
 
+    SECONDS_PER_DAY = 60 * 60 * 24
+
+    # probably reinventing the wheel here...
+    def self.to_seconds(sym)
+      case sym.to_sym
+      when :year
+        SECONDS_PER_DAY * 365
+      when :month
+        SECONDS_PER_DAY * 30
+      when :week 
+        SECONDS_PER_DAY * 7
+      when :day 
+        SECONDS_PER_DAY
+      when :hour
+        60 * 60
+      when :minute
+        60
+      when :second
+        1
+      end
+    end
+
 =begin
     TIMESTAMP_QUANTITIES = [
       year: {
