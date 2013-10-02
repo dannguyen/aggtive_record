@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "aggtive_record"
-  s.version = "0.1.2"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Nguyen"]
-  s.date = "2013-09-23"
+  s.date = "2013-10-02"
   s.description = "This is not even remotely finished or even started on. Please don't download."
   s.email = "dansonguyen@gmail.com"
   s.extra_rdoc_files = [
@@ -35,12 +35,13 @@ Gem::Specification.new do |s|
     "lib/aggtive_record/egg_scopes.rb",
     "lib/aggtive_record/egg_scopes/collation.rb",
     "lib/aggtive_record/egg_scopes/collation/count_by.rb",
-    "lib/aggtive_record/egg_scopes/collation/rate.rb",
+    "lib/aggtive_record/egg_scopes/collation/rate_per.rb",
     "lib/aggtive_record/egg_scopes/time_bucket.rb",
     "lib/aggtive_record/egg_scopes/time_span.rb",
     "lib/aggtive_record/memo.rb",
     "lib/aggtive_record/time.rb",
     "spec/functional/basic_object_run_spec.rb",
+    "spec/functional/collation_spec.rb",
     "spec/lib/aggable_spec.rb",
     "spec/lib/count_by_spec.rb",
     "spec/lib/rate_spec.rb",
@@ -67,6 +68,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<database_cleaner>, ["~> 1.0.1"])
       s.add_development_dependency(%q<mysql2>, [">= 0"])
       s.add_development_dependency(%q<activerecord>, ["~> 3.2.14"])
+      s.add_development_dependency(%q<timecop>, [">= 0"])
     else
       s.add_dependency(%q<groupdate>, [">= 0"])
       s.add_dependency(%q<activesupport>, ["~> 3.2.14"])
@@ -77,6 +79,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<database_cleaner>, ["~> 1.0.1"])
       s.add_dependency(%q<mysql2>, [">= 0"])
       s.add_dependency(%q<activerecord>, ["~> 3.2.14"])
+      s.add_dependency(%q<timecop>, [">= 0"])
     end
   else
     s.add_dependency(%q<groupdate>, [">= 0"])
@@ -88,6 +91,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<database_cleaner>, ["~> 1.0.1"])
     s.add_dependency(%q<mysql2>, [">= 0"])
     s.add_dependency(%q<activerecord>, ["~> 3.2.14"])
+    s.add_dependency(%q<timecop>, [">= 0"])
   end
 end
 
