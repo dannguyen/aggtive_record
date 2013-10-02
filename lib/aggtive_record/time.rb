@@ -21,8 +21,12 @@ module AggtiveRecord
     SECONDS_PER_DAY = 60 * 60 * 24
 
     # probably reinventing the wheel here...
-    def self.to_seconds(sym)
-      case sym.to_sym
+    def self.to_seconds(str)
+
+      num, period = str.to_s.match(/^(\d*)_?(\w+?)s?$/)[1..2]
+      num = num.to_i > 0 ? num.to_i : 1 # ugh
+
+      secs = case period.to_sym
       when :year
         SECONDS_PER_DAY * 365
       when :month
@@ -38,6 +42,8 @@ module AggtiveRecord
       when :second
         1
       end
+
+      num * secs
     end
 
 

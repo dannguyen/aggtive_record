@@ -1,5 +1,5 @@
 require_relative 'collation/count_by'
-require_relative 'collation/rate'
+require_relative 'collation/rate_per'
 
 module AggtiveRecord
   module EggScopes

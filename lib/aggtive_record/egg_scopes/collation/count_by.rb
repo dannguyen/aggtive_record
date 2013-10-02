@@ -12,7 +12,18 @@ module AggtiveRecord
             span_foo = "by_#{time_period}"
             self.send(span_foo).count
           end
+
+          # define dynamically
+          AggtiveRecord::Time.periods.each do |period_name|          
+            foo_name = "count_by_#{period_name}".to_sym
+            # defining scope here, dynamically
+            define_method foo_name do
+              self.count_by(period_name)
+            end
+          end
         end
+
+
 
       end
     end

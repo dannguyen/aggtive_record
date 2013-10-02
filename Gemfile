@@ -9,6 +9,7 @@ group :development do
   gem 'database_cleaner', '~> 1.0.1'
   gem 'mysql2'
   gem 'activerecord', '~> 3.2.14'
+  gem 'timecop'
 end
 
 gem 'groupdate'
