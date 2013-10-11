@@ -20,8 +20,6 @@ module AggtiveRecord
             send( groupdate_foo_name, self.datetime_attribute )
           }         
         end 
-
-
       end
     
 

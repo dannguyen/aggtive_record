@@ -17,12 +17,15 @@ module AggtiveRecord
             # tk: this may be unnecessary
             records = self.scoped.to_a
 
-            time_period_secs = AggtiveRecord::Time.to_seconds(time_period)
+            # eg. :hour is 3600 seconds
+            time_period_in_secs = AggtiveRecord::Time.to_seconds(time_period)
+
+            #e.g. whatever is passed in, or all of them from the beginning to end of reconrds
             timespan_in_seconds ||= self.timespan_to_now(records)
 
                       
 
-            return records.size.to_f * time_period_secs / timespan_in_seconds
+            return records.size.to_f * time_period_in_secs / timespan_in_seconds
           end
 
           # defines rate_per_year, rate_per_hour
@@ -31,18 +34,16 @@ module AggtiveRecord
           AggtiveRecord::Time.periods.each do |period_name|          
             foo_name = "rate_per_#{period_name}".to_sym
             # defining scope here, dynamically
-            define_method foo_name do |*args|
-
-              
-              if args[0].present?
+            define_method foo_name do |*args|              
+              if args[0].present? && args[0] !~ /^overall$/
               # i.e: #rate_per_month(:past_year)
-                past_scope = args[0]  # past_year
-                raise ArgumentError, "Must be a scope with 'past_'" unless past_scope.to_s =~ /^past_/
+                past_scope = args[0]  # past_year, :overall
+                raise ArgumentError, "Must be a scope with 'past_' or 'overall'" unless past_scope.to_s =~ /^past_/
 
                 time_scoped_records = self.send( past_scope )
                 past_time_span_name = past_scope.to_s.match(/past_(\w+)/)[1]
                 past_period_in_seconds = AggtiveRecord::Time.to_seconds(past_time_span_name)
-              else
+              else # overall or no argument
                 time_scoped_records = scoped
                 past_period_in_seconds = self.timespan_to_now(time_scoped_records)
               end

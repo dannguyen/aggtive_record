@@ -88,7 +88,7 @@ DEPENDENCIES
   bundler
   database_cleaner (~> 1.0.1)
   groupdate
-  jeweler (~> 1.8.4)
+  jeweler
   mysql2
   pry
   rspec (~> 2.14.1)
