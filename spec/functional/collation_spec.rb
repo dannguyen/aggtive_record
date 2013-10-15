@@ -52,8 +52,16 @@ describe AggtiveRecord do
       old_time = MusicRecord.order('published_at').pluck(:published_at).first
       new_time = Time.now
 
-      expect(MusicRecord.rate_per_week(:overall)).to eq   4.0 * AggtiveRecord::Time.to_seconds(:week) /  (new_time - old_time)
+      expect(MusicRecord.rate_per_week(:overall)).to eq  MusicRecord.count.to_f * AggtiveRecord::Time.to_seconds(:week) /  (new_time - old_time)
     end
+
+    it '#rate_per_month(:overall)'  do
+      old_time = MusicRecord.order('published_at').pluck(:published_at).first
+      new_time = Time.now
+      
+      expect(MusicRecord.rate_per_month(:overall)).to eq  MusicRecord.count.to_f * AggtiveRecord::Time.to_seconds(:month) /  (new_time - old_time)
+    end
+
 
 
     it '#rate_per_week(:past_14_days)' do 

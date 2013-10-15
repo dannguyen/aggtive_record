@@ -23,9 +23,19 @@ describe "AggtiveRecord::EggScopes -- .rate" do
             MusicRecord.create published_at: 59.minutes.ago
             expect(MusicRecord.rate_per_hour ).to be_within(0.1).of 2
           end
-
         end
 
+
+        context 'when time span of all records is less than the time period' do 
+          context 'it should have a minimum rate of per that time_period' do 
+            it 'should have rate no less than 1 per month' do 
+              Timecop.freeze
+              MusicRecord.create published_at: 1.day.ago 
+
+              expect(MusicRecord.rate_per_month).to eq 1
+            end
+          end
+        end
 
         it 'should raise an error when a non-time period is passed in'
 

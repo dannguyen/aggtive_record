@@ -22,12 +22,17 @@ module AggtiveRecord
             timespan_in_seconds ||= self.timespan_to_now(records)
 
             # return 0 if no timespan_in_seconds
-            return 0 if timespan_in_seconds.to_i ==0
+            return 0 if timespan_in_seconds.to_i == 0
 
             # eg. :hour is 3600 seconds
             time_period_in_secs = AggtiveRecord::Time.to_seconds(time_period)
+
+            # if the rate query is #per_year, and the only record was created 1 day ago
+            #   then the rate should be _no greater_ than 1 per year (as opposed to 365 per year)
+            time_denominator = [time_period_in_secs, timespan_in_seconds].max
+
                     
-            return records.size.to_f * time_period_in_secs / timespan_in_seconds
+            return records.size.to_f * time_period_in_secs / time_denominator
           end
 
           # defines rate_per_year, rate_per_hour
