@@ -35,6 +35,7 @@ module AggtiveRecord
         end
 
         def timespan_to_now(records)
+          return 0 if records.empty? || records.nil?
           ::Time.now - earliest_time_of(records)
         end
 

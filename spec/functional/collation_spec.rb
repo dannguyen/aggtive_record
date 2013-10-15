@@ -3,6 +3,30 @@ require 'spec_helper'
 
 describe AggtiveRecord do 
 
+  context 'collation with zero' do 
+
+    describe '.rate_by' do 
+      it 'should return rates of 0 with no records' do 
+
+        expect(MusicRecord.rate_per_week(:past_month)).to eq 0
+        expect(MusicRecord.rate_per_hour(:past_year)).to eq 0
+        expect(MusicRecord.rate_per_hour(:overall)).to eq 0
+      end
+    end
+
+    describe '.past_' do 
+      it 'should be empty with no records' do 
+        expect(MusicRecord.past_year).to be_empty
+      end
+    end
+
+    describe '.count_by' do 
+      it 'should be empty with no records' do 
+        expect(MusicRecord.count_by_month).to be_empty
+        expect(MusicRecord.past_year.count_by_month).to be_empty
+      end
+    end
+  end
 
   context 'collation methods acting in concert' do
     before(:each) do 
@@ -21,6 +45,8 @@ describe AggtiveRecord do
     it '#overall' do 
       expect(MusicRecord.overall.count).to eq 4
     end
+
+
 
     it '#rate_per_week(:overall)'  do
       old_time = MusicRecord.order('published_at').pluck(:published_at).first
