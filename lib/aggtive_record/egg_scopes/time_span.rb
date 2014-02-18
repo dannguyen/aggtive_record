@@ -28,7 +28,7 @@ module AggtiveRecord
         # some custom time periods
         # e.g. :past_14_days, :past_30_days
 
-        [[14, 'day'], [30, 'day'], [6, 'month']].each do |p_arr|
+        [[14, 'day'], [30, 'day'], [6, 'month'], [60, 'day']].each do |p_arr|
           num, period = p_arr
           foo_name = "past_#{num}_#{period.pluralize}"
           scope foo_name, ->{
