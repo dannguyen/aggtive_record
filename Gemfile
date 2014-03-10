@@ -12,5 +12,5 @@ group :development do
   gem 'timecop'
 end
 
-gem 'groupdate'
-gem 'activesupport', '~> 3.2.14'
+gem 'groupdate', '~> 1.0.5'
+gem 'activesupport', '~> 3.2.17'
